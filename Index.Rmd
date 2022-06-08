@@ -1,0 +1,44 @@
+---
+title: "Datos de Felinos de costa Rica"
+author: "Nataly Montoya"
+date: '2022-06-08'
+output: html_document
+---
+
+# Preparativos
+```{r carga- paquetes, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(sf)
+library(DT)
+library(leaflet)
+
+```
+
+# 
+```{r}
+# Lectura de un archivo CSV con registros de presencia de felinos en Costa Rica
+felinos <-
+  st_read(
+    "C:/Users/gf0604-1/Datos espaciales/felinos.csv",
+    options = c(
+      "X_POSSIBLE_NAMES=decimalLongitude", 
+      "Y_POSSIBLE_NAMES=decimalLatitude"  
+    ),
+    quiet = TRUE
+  )
+```
+
+
+# Tabla
+```{r tabla}
+# Visualización de datos de mtcars en formato tabular
+mtcars %>%
+  datatable(options = list(
+    pageLength = 5,
+    language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')
+  ))
+```
+
+# 
